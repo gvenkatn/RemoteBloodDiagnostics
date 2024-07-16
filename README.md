@@ -1,3 +1,5 @@
+<p align = "center"> <img src="logo.png" width="170px"></a>
+   
 # RemoteBloodDiagnostics
 **Technologies Used:** Python, SQL, Django
 Web application for blood sample collection and testing
