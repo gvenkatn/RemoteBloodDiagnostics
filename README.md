@@ -1,4 +1,5 @@
 <p align = "center"> <img src="logo.png" width="170px"></a>
+<p align = "center"><b>HaemoDiagnostics</b></a>
    
 # RemoteBloodDiagnostics
 **Technologies Used:** Python, SQL, Django
