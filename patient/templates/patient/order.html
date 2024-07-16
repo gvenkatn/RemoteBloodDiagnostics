@@ -1,0 +1,101 @@
+{% extends 'patient/base.html' %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="pt-5">
+                    {% for avltest in available_tests %}
+                    <div class="row">
+                        
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ avltest.pk }}">
+                                    <label class="form-check-label">{{ avltest.name }}</label>
+                                </div>                                
+                            </div>
+                            <p>
+                                {{ avltest.description }}
+                            </p>
+                            <p class="font-weight-bold pl-5">Rs. {{ avltest.price }}</p>
+                       
+                    </div>
+                    <hr />
+                {% endfor %}
+                </div>
+                <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="name">Full Name</label>
+                        <input required class="form-control" type="text" placeholder="Your Name" name="name">
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="email">E-Mail Address</label>
+                        <input required class="form-control" type="text" placeholder="example@company.com" name="email">
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="phone">Mobile Number</label>
+                        <input required class="form-control" type="text" placeholder="0000000000" name="phone">
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="street">Street Address</label>
+                        <input required class="form-control" type="text" placeholder="Apt1, 123 Main Road, XYZ Nagar" name="street">
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="pin_code">Pin Code</label>
+                        <input required class="form-control" type="text" placeholder="000007" name="pin_code">
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group pt-3">
+                        <label for="date">Appointment Date</label>
+                        <input required class="form-control" type="datetime-local" name="date">
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">
+            Schedule Appointment
+          </button>
+          
+          <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="submitModalLabel">Confirm Appointment?</h5>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  <button type="submit" class="btn btn-primary">Yes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- <button class="btn btn-dark mt-5">Place Order!</button> -->
+
+        
+        </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+{% endblock content %}

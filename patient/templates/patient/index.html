@@ -1,0 +1,17 @@
+{% extends 'patient/base.html'%}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-sm-12 p-4 text-center">
+        <h1>Blood Testing Services</h1>
+    </div>
+    </div>
+    <div class="row justify-content-center mt-1">
+    <div class="card col-d-5 col-sm-12 p-4 text-center">
+        <h2>Schedule your Blood test</h2> <a href = "{% url 'Order'%}" class="btn btn-outline-primary">Book Now</a>
+    </div>
+    </div>
+</div>
+
+{% endblock content %}

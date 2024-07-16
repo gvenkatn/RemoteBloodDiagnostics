@@ -1,0 +1,53 @@
+{% extends 'lab/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 text-center mt-3">
+        <h1>Order ID: {{ order.pk }}</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 com-sm-12 mt-5">
+            <div class="col-sm-12 com-sm-12 mt-5">
+                <h3><center>Customer Information: </center></h3>
+            </div>
+            <p><span style="font-weight: 400;">Name:</span> {{ order.name }}</p>
+            <p><span style="font-weight: 400;">Email:</span> {{ order.email }}</p> 
+            <p><span style="font-weight: 400;">Phone:</span> {{ order.phone }}</p> 
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-12">
+            <div class="col-sm-12 com-sm-12 mt-5">
+            <h3><center>Blood Tests: </center></h3>
+            </div>
+            {% for item in order.items.all %}    
+            <p>{{ item.name }}</p> 
+            {% endfor %}
+    <p><span style="font-weight: 400;">Price:</span> {{ order.price }}</p> 
+    <p class="mt-3">
+        {% if order.is_paid %}
+            <p><i style="color: green;" class="fas fa-check"></i><span class="pl-2">Paid</span></p>
+        {% else %}
+            <p><i style="color: red;" class="fas fa-times"></i><span class="pl-2">Not Paid</span></p>
+        {% endif %}
+    </p>
+    </div>
+    <form class="row justify-content-center"
+        action="/diagnostic/lab/orders/list.html" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            {{ form.file }}
+        </p>
+        <p><center><input type="submit" value="Upload Report"/></center></p>
+    </form>
+</div>
+</div>
+
+</div>
+{% endblock content %}
